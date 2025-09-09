@@ -11,15 +11,16 @@ app.get("/", function(req, res) {
 });
 
 // ✅ servir JSON con soporte de variable de entorno
-app.get("/json", function(req, res) {
-  let message = "Hello json";
+app.get("/json", (req, res) => {
+  let response = { message: "Hello json" };
 
   if (process.env.MESSAGE_STYLE === "uppercase") {
-    message = message.toUpperCase();
+    response.message = response.message.toUpperCase();
   }
 
-  res.json({ "message": message });
+  res.json(response);
 });
+
 
 module.exports = app;
 
