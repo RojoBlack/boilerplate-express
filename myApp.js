@@ -10,6 +10,9 @@ app.get("/", function(req, res) {
   res.sendFile(__dirname + "/views/index.html");
 });
 
+// 👇 Agrega esto para debug
+console.log("MESSAGE_STYLE:", process.env.MESSAGE_STYLE);
+
 // ✅ servir JSON con soporte de variable de entorno
 app.get("/json", (req, res) => {
   let response = { message: "Hello json" };
