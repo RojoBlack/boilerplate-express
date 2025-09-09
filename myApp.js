@@ -1,22 +1,16 @@
 require('dotenv').config();
-let express = require('express');
+let express = require("express");
 let app = express();
 
+// ✅ servir archivos estáticos desde /public
 app.use("/public", express.static(__dirname + "/public"));
 
-console.log("Hello World");
-
-
-
-/*app.get("/", function(req, res) {
-  res.send("Hello Express");
-});*/
-
+// ✅ servir index.html en la raíz
 app.get("/", function(req, res) {
   res.sendFile(__dirname + "/views/index.html");
 });
 
-
+// ✅ servir JSON con soporte de variable de entorno
 app.get("/json", function(req, res) {
   let message = "Hello json";
 
@@ -26,6 +20,8 @@ app.get("/json", function(req, res) {
 
   res.json({ "message": message });
 });
+
+module.exports = app;
 
 
 
