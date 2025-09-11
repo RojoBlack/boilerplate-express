@@ -7,6 +7,15 @@ app.use(function (req, res, next) {
   next();
 });
 
+app.get("/now", function (req, res, next) {
+  // Middleware: añade la hora al objeto request
+  req.time = new Date().toString();
+  next();
+}, function (req, res) {
+  // Handler final: responde con un JSON
+  res.json({ time: req.time });
+});
+
 
 // ✅ servir archivos estáticos desde /public
 app.use("/public", express.static(__dirname + "/public"));
