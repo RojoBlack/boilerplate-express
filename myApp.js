@@ -15,6 +15,12 @@ app.route("/name")
     res.json({ name: `${first} ${last}` });
   });
 
+  app.post("/name", (req, res) => {
+  const { first, last } = req.body; 
+  res.json({ name: `${first} ${last}` });
+});
+
+
 app.use(function (req, res, next) {
   console.log(req.method + " " + req.path + " - " + req.ip);
   next();
