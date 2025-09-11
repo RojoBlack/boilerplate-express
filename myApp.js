@@ -2,6 +2,12 @@ require('dotenv').config();
 let express = require("express");
 let app = express();
 
+app.use(function (req, res, next) {
+  console.log(req.method + " " + req.path + " - " + req.ip);
+  next();
+});
+
+
 // ✅ servir archivos estáticos desde /public
 app.use("/public", express.static(__dirname + "/public"));
 
