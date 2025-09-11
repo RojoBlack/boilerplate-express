@@ -16,6 +16,10 @@ app.get("/now", function (req, res, next) {
   res.json({ time: req.time });
 });
 
+app.get("/:word/echo", (req, res) => {
+  res.json({ echo: req.params.word });
+});
+
 
 // ✅ servir archivos estáticos desde /public
 app.use("/public", express.static(__dirname + "/public"));
